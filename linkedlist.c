@@ -135,28 +135,23 @@ Node *deleteEnd(linkedList *list)
   free(list->tail);
   list->tail = beforeTail;
 
-  return list->tail;
+  return list->root;
 };
 
-// Node *deleteSingleList(singleList *list);
+Node *deleteAt(linkedList *list, int pos)
+{
+  if (pos > getLength(list))
+    return NULL;
 
-// // Xóa tất cả
-// node *deleteSingleList(singleList *list)
-// {
-//   while ((*list).root != NULL)
-//     deleteBegin(list);
-// }
+  // Find node right before node needed to delete
+  Node *prevNode = getNodeAt(list, pos - 1);
 
-// // Toàn bộ danh sách
+  // Find current node in pos
+  Node *currNode = getNodeAt(list, pos);
 
-// int totalSingleList(singleList list)
-// {
-//   int i = 0;
-//   list.cur = list.root;
-//   while (list.cur != NULL)
-//   {
-//     i++;
-//     list.cur = list.cur->next;
-//   }
-//   return i;
-// }
+  // Delete it
+  prevNode->next = currNode->next;
+  free(currNode);
+
+  return list->root;
+};

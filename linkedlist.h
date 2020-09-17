@@ -28,3 +28,4 @@ Node *insertAt(linkedList *list, int e, int pos);
 // Delete
 Node *deleteBegin(linkedList *list);
 Node *deleteEnd(linkedList *list);
+Node *deleteAt(linkedList *list, int pos);
