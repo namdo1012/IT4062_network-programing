@@ -17,8 +17,9 @@ linkedList *createSingleList();
 Node *makeNewNode(int e);
 
 // Get
-Node *getValueAt(linkedList *list, int index);
+Node *getNodeAt(linkedList *list, int index);
 
 // Insert
 Node *insertEnd(linkedList *list, int e);
 Node *insertBegin(linkedList *list, int e);
+Node *insertAt(linkedList *list, int e, int pos);

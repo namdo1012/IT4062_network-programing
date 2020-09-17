@@ -36,7 +36,7 @@ Node *makeNewNode(int val)
   return new;
 }
 
-Node *getValueAt(linkedList *list, int index)
+Node *getNodeAt(linkedList *list, int index)
 {
   // If inputed index is negative, return the root node
   if (index <= 0)
@@ -80,8 +80,21 @@ Node *insertEnd(linkedList *list, int e)
     list->tail->next = new;
     list->tail = new;
   }
-  return list->tail;
+  return list->root;
 };
+
+Node *insertAt(linkedList *list, int e, int pos)
+{
+  // Find node right before node in pos
+  Node *tmp = getNodeAt(list, pos - 1);
+
+  // Insert new node to pos
+  Node *new = makeNewNode(e);
+  new->next = tmp->next;
+  tmp->next = new;
+
+  return list->root;
+}
 
 /*
 Thêm 1 Node
