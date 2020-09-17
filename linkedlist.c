@@ -15,11 +15,12 @@ void printSingleList(linkedList *list)
     printf("%d", tmp->val);
     tmp = tmp->next;
   }
+  printf("\n");
 }
 
 linkedList *createSingleList()
 {
-  // printf("Running: ");
+  printf("Running: ");
   linkedList *list;
   list->root = NULL;
   list->tail = NULL;
@@ -34,6 +35,23 @@ Node *makeNewNode(int val)
   new->next = NULL;
   return new;
 }
+
+Node *getValueAt(linkedList *list, int index)
+{
+  // If inputed index is negative, return the root node
+  if (index <= 0)
+    return list->root;
+
+  Node *tmp = list->root;
+  int i = 1;
+  while (i != index)
+  {
+    tmp = tmp->next;
+    i++;
+  }
+
+  return tmp;
+};
 
 Node *insertBegin(linkedList *list, int val)
 {
@@ -50,12 +68,26 @@ Node *insertBegin(linkedList *list, int val)
   return (*list).root;
 }
 
+Node *insertEnd(linkedList *list, int e)
+{
+  Node *new = makeNewNode(e);
+  if (list->root == NULL)
+  {
+    list->root = list->tail = new;
+  }
+  else
+  {
+    list->tail->next = new;
+    list->tail = new;
+  }
+  return list->tail;
+};
+
 /*
 Thêm 1 Node
 */
 
 // Node *insertAfter(singleList *list, elementtype e);
-// Node *insertEnd(singleList *list, elementtype e);
 // Node *insertAtPosition(singleList *list, elementtype e, int n);
 
 // /*

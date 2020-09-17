@@ -1,8 +1,3 @@
-/*
-Khai báo node
-*/
-
-// typedef struct node node;
 typedef struct Node
 {
   int val;
@@ -15,8 +10,15 @@ typedef struct
   Node *tail;
 } linkedList;
 
+void printSingleList(linkedList *list);
+
 // Implementing
 linkedList *createSingleList();
 Node *makeNewNode(int e);
+
+// Get
+Node *getValueAt(linkedList *list, int index);
+
+// Insert
+Node *insertEnd(linkedList *list, int e);
 Node *insertBegin(linkedList *list, int e);
-void printSingleList(linkedList *list);
