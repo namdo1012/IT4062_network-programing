@@ -3,6 +3,19 @@
 
 #include "linkedlist.h"
 
+int getLength(linkedList *list)
+{
+  int count = 0;
+  Node *tmp = list->root;
+  while (tmp != NULL)
+  {
+    tmp = tmp->next;
+    count++;
+  }
+
+  return count;
+}
+
 void printSingleList(linkedList *list)
 {
   // printf("Running...");
@@ -36,15 +49,19 @@ Node *makeNewNode(int val)
   return new;
 }
 
-Node *getNodeAt(linkedList *list, int index)
+Node *getNodeAt(linkedList *list, int pos)
 {
-  // If inputed index is negative, return the root node
-  if (index <= 0)
+  // If inputed pos is negative, return the root node
+  if (pos <= 0)
     return list->root;
+
+  // If inputed pos too greater than list's length, return the tail node
+  if (pos > getLength(list))
+    return list->tail;
 
   Node *tmp = list->root;
   int i = 1;
-  while (i != index)
+  while (i != pos)
   {
     tmp = tmp->next;
     i++;
@@ -96,118 +113,32 @@ Node *insertAt(linkedList *list, int e, int pos)
   return list->root;
 }
 
-/*
-Thêm 1 Node
-*/
+Node *deleteBegin(linkedList *list)
+{
+  if (list->root != NULL)
+  {
+    Node *new = list->root;
+    list->root = list->root->next;
+    free(new);
+  }
 
-// Node *insertAfter(singleList *list, elementtype e);
-// Node *insertAtPosition(singleList *list, elementtype e, int n);
+  return list->root;
+};
 
-// /*
-// Xóa Node
-// */
+Node *deleteEnd(linkedList *list)
+{
+  // Find node right before current tail node
+  Node *beforeTail = getNodeAt(list, getLength(list) - 1);
 
-// Node *deleteBegin(singleList *list);
-// Node *deleteEnd(singleList *list);
-// Node *deleteAtPosition(singleList *list, int n);
+  // Delete tail node
+  beforeTail->next = NULL;
+  free(list->tail);
+  list->tail = beforeTail;
+
+  return list->tail;
+};
+
 // Node *deleteSingleList(singleList *list);
-
-// /*
-// In ra màn hình tất cả list
-// */
-
-// /*
-// Tất cả Node
-// */
-// int totalSingleList(singleList list);
-
-// Thêm vào cuối danh sách
-
-// Node *insertEnd(singleList *list, elementtype e)
-// {
-//   Node *new = makeNewNode(e);
-//   if ((*list).root == NULL)
-//   {
-//     (*list).root = (*list).tail = new;
-//   }
-//   else
-//   {
-//     (*list).tail->next = new;
-//     (*list).tail = new;
-//   }
-//   return (*list).tail;
-// }
-
-// // Thêm vào vị trí
-// node *insertAtPosition(singleList *list, elementtype e, int n)
-// {
-//   node *new = makeNewNode(e);
-//   if ((*list).root == NULL)
-//   {
-//     (*list).root = (*list).tail = (*list).cur = new;
-//   }
-//   else
-//   {
-//     if (n <= 1)
-//     {
-//       insertBegin(list, new->element);
-//       return (*list).cur;
-//     }
-//     if (n > totalSingleList(*list))
-//     {
-//       insertEnd(list, new->element);
-//       return (*list).cur;
-//     }
-//     else
-//     {
-//       (*list).cur = (*list).prev = (*list).root;
-//       int i = 1;
-//       while (((*list).cur->next != NULL) && (i <= n - 1))
-//       {
-//         i++;
-//         (*list).prev = (*list).cur;
-//         (*list).cur = (*list).cur->next;
-//       }
-//       new->next = (*list).cur;
-//       (*list).prev->next = (*list).cur = new;
-//     }
-//   }
-//   return (*list).cur;
-// }
-
-// // Xóa node đầu tiên
-
-// node *deleteBegin(singleList *list)
-// {
-//   if ((*list).root != NULL)
-//   {
-//     node *new = (*list).root;
-//     (*list).root = (*list).root->next;
-//     free(new);
-//   }
-//   return (*list).root;
-// }
-
-// // Xóa node cuối cùng
-
-// node *deleteEnd(singleList *list)
-// {
-//   if ((*list).root != NULL)
-//   {
-//     (*list).cur = (*list).prev = (*list).root;
-//     while (((*list).cur->next != NULL))
-//     {
-//       (*list).prev = (*list).cur;
-//       (*list).cur = (*list).cur->next;
-//     }
-//     node *new = (*list).cur;
-//     (*list).cur = (*list).cur->next;
-//     free(new);
-//     (*list).tail = (*list).prev;
-//     (*list).tail->next = NULL;
-//     return (*list).tail;
-//   }
-// }
 
 // // Xóa tất cả
 // node *deleteSingleList(singleList *list)

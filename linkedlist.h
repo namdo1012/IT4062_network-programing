@@ -10,6 +10,7 @@ typedef struct
   Node *tail;
 } linkedList;
 
+int getLength(linkedList *list);
 void printSingleList(linkedList *list);
 
 // Implementing
@@ -23,3 +24,7 @@ Node *getNodeAt(linkedList *list, int index);
 Node *insertEnd(linkedList *list, int e);
 Node *insertBegin(linkedList *list, int e);
 Node *insertAt(linkedList *list, int e, int pos);
+
+// Delete
+Node *deleteBegin(linkedList *list);
+Node *deleteEnd(linkedList *list);
