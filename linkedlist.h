@@ -1,6 +1,13 @@
+typedef struct
+{
+  char username[20];
+  char password[20];
+  int status;
+} nodeValType;
+
 typedef struct Node
 {
-  int val;
+  nodeValType val;
   struct Node *next;
 } Node;
 
@@ -15,15 +22,15 @@ void printSingleList(linkedList *list);
 
 // Implementing
 linkedList *createSingleList();
-Node *makeNewNode(int e);
+Node *makeNewNode(nodeValType e);
 
 // Get
 Node *getNodeAt(linkedList *list, int index);
 
 // Insert
-Node *insertEnd(linkedList *list, int e);
-Node *insertBegin(linkedList *list, int e);
-Node *insertAt(linkedList *list, int e, int pos);
+Node *insertEnd(linkedList *list, nodeValType e);
+Node *insertBegin(linkedList *list, nodeValType e);
+Node *insertAt(linkedList *list, nodeValType e, int pos);
 
 // Delete
 Node *deleteBegin(linkedList *list);

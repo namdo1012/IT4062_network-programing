@@ -18,6 +18,8 @@ int getLength(linkedList *list)
 
 void printSingleList(linkedList *list)
 {
+  nodeValType nodeVal;
+
   // printf("Running...");
   if (list == NULL)
     return;
@@ -25,7 +27,8 @@ void printSingleList(linkedList *list)
   Node *tmp = list->root;
   while (tmp != NULL)
   {
-    printf("%d", tmp->val);
+    nodeVal = tmp->val;
+    printf("%s\t%s\t%d\n", nodeVal.username, nodeVal.password, nodeVal.status);
     tmp = tmp->next;
   }
   printf("\n");
@@ -41,7 +44,7 @@ linkedList *createSingleList()
   return list;
 }
 
-Node *makeNewNode(int val)
+Node *makeNewNode(nodeValType val)
 {
   Node *new = (Node *)malloc(sizeof(Node));
   new->val = val;
@@ -70,7 +73,7 @@ Node *getNodeAt(linkedList *list, int pos)
   return tmp;
 };
 
-Node *insertBegin(linkedList *list, int val)
+Node *insertBegin(linkedList *list, nodeValType val)
 {
   Node *new = makeNewNode(val);
   if ((*list).root == NULL)
@@ -85,7 +88,7 @@ Node *insertBegin(linkedList *list, int val)
   return (*list).root;
 }
 
-Node *insertEnd(linkedList *list, int e)
+Node *insertEnd(linkedList *list, nodeValType e)
 {
   Node *new = makeNewNode(e);
   if (list->root == NULL)
@@ -100,7 +103,7 @@ Node *insertEnd(linkedList *list, int e)
   return list->root;
 };
 
-Node *insertAt(linkedList *list, int e, int pos)
+Node *insertAt(linkedList *list, nodeValType e, int pos)
 {
   // Find node right before node in pos
   Node *tmp = getNodeAt(list, pos - 1);
