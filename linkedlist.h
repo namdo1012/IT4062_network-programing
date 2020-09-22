@@ -21,7 +21,7 @@ int getLength(linkedList *list);
 void printSingleList(linkedList *list);
 
 // Implementing
-linkedList *createSingleList();
+void *createSingleList(linkedList *list);
 Node *makeNewNode(nodeValType e);
 
 // Get

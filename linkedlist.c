@@ -34,14 +34,14 @@ void printSingleList(linkedList *list)
   printf("\n");
 }
 
-linkedList *createSingleList()
+void *createSingleList(linkedList *list)
 {
   printf("Running: ");
-  linkedList *list;
+  // linkedList *list;
   list->root = NULL;
   list->tail = NULL;
 
-  return list;
+  // return list;
 }
 
 Node *makeNewNode(nodeValType val)
