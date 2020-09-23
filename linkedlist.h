@@ -1,3 +1,6 @@
+#ifndef __LINKEDLIST_H__
+#define __LINKEDLIST_H__
+
 typedef struct
 {
   char username[20];
@@ -36,3 +39,5 @@ Node *insertAt(linkedList *list, nodeValType e, int pos);
 Node *deleteBegin(linkedList *list);
 Node *deleteEnd(linkedList *list);
 Node *deleteAt(linkedList *list, int pos);
+
+#endif

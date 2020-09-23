@@ -20,7 +20,6 @@ void printSingleList(linkedList *list)
 {
   nodeValType nodeVal;
 
-  // printf("Running...");
   if (list == NULL)
     return;
 
