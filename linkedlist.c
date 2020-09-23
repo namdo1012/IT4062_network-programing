@@ -36,12 +36,9 @@ void printSingleList(linkedList *list)
 
 void *createSingleList(linkedList *list)
 {
-  printf("Running: ");
   // linkedList *list;
   list->root = NULL;
   list->tail = NULL;
-
-  // return list;
 }
 
 Node *makeNewNode(nodeValType val)
