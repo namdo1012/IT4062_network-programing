@@ -9,6 +9,7 @@
 
 #include "network.h"
 
+// DONE
 void serveHomepageDomainName(char domainName[30])
 {
   struct in_addr addr;
