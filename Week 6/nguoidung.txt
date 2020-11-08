@@ -1,0 +1,4 @@
+hust 1a2b3c 1
+soict soict123 0
+nam 123 1
+do 123 1
