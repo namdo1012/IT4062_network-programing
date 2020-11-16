@@ -1,0 +1,10 @@
+de u 0
+ab c 0
+e g 1
+c d 1
+a 124 1
+sss sss 0
+soict soict 0
+affit affit1 0
+hiep hiep123 1
+hust hust123 1
